@@ -113,7 +113,7 @@ for j in steps:
     current_lengths = unpackingLenTen[j][0:24]
     current_tensions = unpackingLenTen[j][24:]
 
-    current_tensions = [400.0 if i > 400.0 else i for i in current_tensions]
+    current_tensions = np.array([400.0 if i > 400.0 else i for i in current_tensions])
     current_moments = current_tensions * 0.006
 
     newRestLengths = np.array([current_tensions[i - 1] for i in SBtransformSort[1]])
