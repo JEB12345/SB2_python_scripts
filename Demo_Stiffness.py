@@ -11,8 +11,8 @@ import scipy.io as sio
 signal.signal(signal.SIGINT, lambda number, frame: sys.exit())
 
 # Module Names on SUPERball V2
-numModules = 26
-SBModuleNames = (['M' + str(i + 1) for i in xrange(numModules)])
+numModules = 24
+SBModuleNames = (['M' + str(i + 1).zfill(2) for i in xrange(numModules)])
 
 # Need to look into XML formatting for Hebi Gains
 # sio.loadmat('defaultGains.mat')
