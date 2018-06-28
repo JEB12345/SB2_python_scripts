@@ -67,6 +67,8 @@ GroupSB.command_lifetime = 0.0
 CmdSB.position = np.ones(GroupSB.size) * 0.0
 GroupSB.send_command(CmdSB)
 
+raw_input('')
+
 # Set Gains for the packing controller
 CmdSB.control_strategy = np.ones(GroupSB.size) * 3.0
 CmdSB.position_kp = np.ones(GroupSB.size) * 1
@@ -77,6 +79,8 @@ CmdSB.effort_max_output = np.ones(GroupSB.size) * 3.0
 CmdSB.effort_min_output = np.ones(GroupSB.size) * -3.0
 
 GroupSB.send_command(CmdSB)
+
+raw_input('')
 
 # Setup the star packing set points
 SBtransform = np.array([[19, 20, 21, 15, 8, 2, 14, 9, 4, 13, 7, 6, 1, 18, 12, 3, 17, 11, 5, 16, 10, 23, 24, 22],
@@ -129,7 +133,7 @@ for j in steps:
 
 print('DOWN')
 
-system("pause")  # may function as intended
+raw_input('')
 
 CmdSB.position = np.ones(GroupSB.size) * 0.0
 GroupSB.send_command(CmdSB)
