@@ -64,19 +64,21 @@ CmdSB = hebi.GroupCommand(GroupSB.size)
 
 ######################## Actual Code ###################################
 GroupSB.command_lifetime = 0.0
-CmdSB.position = np.ones(GroupSB.size) * 0.0
+CmdSB.position = np.ones(GroupSB.size) * 3.0
+print(CmdSB.position)
 GroupSB.send_command(CmdSB)
 
 raw_input('Pause 1')
 
 # Set Gains for the packing controller
-CmdSB.control_strategy = np.ones(GroupSB.size) * 3.0
 CmdSB.position_kp = np.ones(GroupSB.size) * 1
 CmdSB.effort_kp = np.ones(GroupSB.size) * 0.2
 CmdSB.effort_ki = np.ones(GroupSB.size) * 0.01
 
 CmdSB.effort_max_output = np.ones(GroupSB.size) * 3.0
 CmdSB.effort_min_output = np.ones(GroupSB.size) * -3.0
+
+CmdSB.position = np.ones(GroupSB.size) * 0.0
 
 GroupSB.send_command(CmdSB)
 
@@ -123,7 +125,8 @@ for j in steps:
     newRestLengths = np.array([current_tensions[i - 1] for i in SBtransformSort[1]])
     newMoments = np.array([current_moments[i - 1] for i in SBtransformSort[1]])
 
-    cmdMotorPositions = (100 * newRestLengths) * slope + offset
+    cmdMotorPositions = (100 * newRestLengths) * slope[0:2] + offset[0:2]
+    print(cmdMotorPositions)
 
     CmdSB.position = cmdMotorPositions
     CmdSB.effort = newMoments * 0.2
@@ -137,5 +140,7 @@ raw_input('Should bring back up')
 
 CmdSB.position = np.ones(GroupSB.size) * 0.0
 GroupSB.send_command(CmdSB)
+
+sleep(1)
 
 sys.exit()
