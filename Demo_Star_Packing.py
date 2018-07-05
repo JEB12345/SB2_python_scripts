@@ -122,7 +122,7 @@ for j in steps:
     current_tensions = np.array([400.0 if i > 400.0 else i for i in current_tensions])
     current_moments = current_tensions * 0.006
 
-    newRestLengths = np.array([current_tensions[i - 1] for i in SBtransformSort[1]])
+    newRestLengths = np.array([current_lengths[i - 1] for i in SBtransformSort[1]])
     newMoments = np.array([current_moments[i - 1] for i in SBtransformSort[1]])
 
     cmdMotorPositions = (100 * newRestLengths) * slope + offset
