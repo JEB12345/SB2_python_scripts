@@ -14,7 +14,7 @@ def DetectCurrentFace( Group ):
     #
     # lookup = hebi.Lookup()  # Get table of all Hebi motors
     # sleep(2)  # gives the Lookup process time to discover modules
-    # 
+    #
     # # Displays the Hebi modules found on the network
     # print('Modules found on the network:')
     #
