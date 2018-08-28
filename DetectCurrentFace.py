@@ -1,4 +1,4 @@
-def DetectCurrentFace( Group ):
+def DetectCurrentFace( hebi, Group ):
 
     import scipy.io as scio
     import sys
